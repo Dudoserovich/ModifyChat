@@ -1,0 +1,70 @@
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+
+                    <div class="row mb-2">
+                        <label for="sign-up-username" class="col-form-label pt-0">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" class="form-control fields" placeholder="Enter your username"
+                                   name="login" id="sign-up-username" aria-describedby="usernameHelp">
+                        </div>
+                        <div id="usernameHelp" class="form-text">
+                            Login must contain from 2 to 32 characters
+                        </div>
+                    </div>
+                    <div id="sign-up-username-error" class="mb-2 text-danger">
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <label for="sign-up-password" class="col-form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control sign-up-password fields" placeholder="Enter your password"
+                                   name="password" id="sign-up-password" aria-describedby="passwordHelp">
+                        </div>
+                        <div id="passwordHelp" class="form-text">
+                            Password must contain from 5 to 64 characters
+                        </div>
+                    </div>
+                    <div id="sign-up-password-error" class="mb-2 text-danger">
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <label for="sign-up-re-password" class="col-form-label">Repeat password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control sign-up-re-password fields" placeholder="Repeat your password"
+                                   name="re-password" id="sign-up-re-password">
+                        </div>
+                    </div>
+                    <div id="sign-up-re-password-error" class="mb-2 text-danger">
+
+                    </div>
+
+                    <div class="row mb-2 invisible" style="height: 0">
+                        <div class="input-group">
+                            <label>
+                                <input type="text" class="form-control fields"
+                                       name="reg" id="sign-up-correct" value="">
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sign-up" data-bs-dismiss="modal">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{#
+<script src="static/signUp.js"></script>#}

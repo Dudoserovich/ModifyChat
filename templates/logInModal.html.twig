@@ -1,0 +1,37 @@
+<div class="modal fade" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">LogIn</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+
+                    <div class="row mb-2">
+                        <label for="log-in-username" class="col-form-label pt-0">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" class="form-control fields" placeholder="Enter your username"
+                                   name="login" id="log-in-username">
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label for="log-in-password" class="col-form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control sign-up-password fields"
+                                   placeholder="Enter your password"
+                                   name="password" id="log-in-password">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sign-up" data-bs-dismiss="modal">Log in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

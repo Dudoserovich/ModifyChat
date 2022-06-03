@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+{% include 'head.html.twig' %}
+<body>
+<div class="container">
+    {% include 'header.html.twig' %}
+</div>
+<div class="container h-100 d-flex align-items-center justify-content-center flex-column">
+    <div>
+        <form method="post">
+            <div class="d-flex align-items-center align-middle col-md-11">
+                <img src={{ logo }} alt={{ id }} style="height: 100px">
+                <div class="row mb-2 ms-2">
+                    <label for="login" class="col-form-label">Your login</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control login fields" placeholder="Enter new login"
+                               name="login" id="login" value={{ login }} disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2 col-md-12">
+                <label for="old-password" class="col-form-label">Your old password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control old-password fields" placeholder="Enter your old password"
+                           name="old-password" id="old-password" disabled>
+                </div>
+            </div>
+
+            <div class="row mb-2 col-md-12">
+                <label for="new-password" class="col-form-label">New password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control re-password fields" placeholder="Enter your new password"
+                           name="new-password" id="new-password" disabled>
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <div class="form-check me-2">
+                    <input class="form-check-input" type="checkbox" value="" id="editing-profile">
+                    <label class="form-check-label" for="editing-profile">
+                        Enable editing
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="check-passwords">
+                    <label class="form-check-label" for="check-passwords">
+                        Show passwords
+                    </label>
+                </div>
+            </div>
+
+            <div class="row mb-2 invisible" style="height: 0">
+                <div class="input-group">
+                    <label>
+                        <input type="text" class="form-control"
+                               name="id" id="id" value={{ id }}>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" id="submit-portfolio">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="static/notifications.js"></script>
+<script src="static/correctFields.js"></script>
+
+<script>
+
+    // убираем disable перед отправкой
+    document.querySelector('#submit-portfolio').addEventListener('click', () => {
+        const login = document.querySelector('#login')
+        const oldPassword = document.querySelector('#old-password')
+        const newPassword = document.querySelector('#re-password')
+
+        login.removeAttribute('disabled')
+        oldPassword.removeAttribute('disabled')
+        newPassword.removeAttribute('disabled')
+    })
+
+    // видимость паролей
+    document.querySelector('#check-passwords').addEventListener('click', () => {
+        const oldPassword = document.getElementById("old-password")
+        const newPassword = document.getElementById("new-password")
+
+        if (oldPassword.type === "password") {
+            oldPassword.type = "text";
+            newPassword.type = "text";
+        } else {
+            oldPassword.type = "password";
+            newPassword.type = "password";
+        }
+    })
+
+    // активировать редактирование
+    document.querySelector('#editing-profile').addEventListener('click', () => {
+        const login = document.querySelector('#login')
+        const oldPassword = document.querySelector('#old-password')
+        const newPassword = document.querySelector('#new-password')
+
+        login.hasAttribute('disabled') ?
+            login.removeAttribute('disabled') :
+            login.setAttribute('disabled', 'disabled')
+
+        oldPassword.hasAttribute('disabled') ?
+            oldPassword.removeAttribute('disabled') :
+            oldPassword.setAttribute('disabled', 'disabled')
+
+        newPassword.hasAttribute('disabled') ?
+            newPassword.removeAttribute('disabled') :
+            newPassword.setAttribute('disabled', 'disabled')
+    })
+</script>
+</body>
+</html>

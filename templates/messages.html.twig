@@ -1,0 +1,59 @@
+<div class="container d-flex h-100 align-items-center p-0 align-middle mb-2"
+     style="flex-direction: column;"
+>
+    <div class="card w-75" style="align-items: center; max-height: 500px; min-width: 200px">
+        <div class="card-header w-100 text-center">
+            {% if login %}
+                <img src={% if logo is empty %}{{ "https://avatars.dicebear.com/api/avataaars/" ~
+                login ~ ".svg?background=%23e6e6fa&size=40&radius=50" }}{% else %}{{ logo }}{% endif %}
+                >
+                {{ login }}
+            {% else %}
+                <p class="m-0" style="color: gray">{{ "You are not authorized" }}</p>
+            {% endif %}
+        </div>
+        <div class="messages card-body w-100" style="overflow-y: scroll; width: 300px">
+            {% if messages|length > 0 %}
+                {% for message in messages %}
+                    <div class="mb-2 card {% if login == message.username %}{{ "bg-dark text-white" }}{% endif %}">
+                        <div class="card-body">
+                            <div class="user d-flex align-items-center justify-content-between"
+                                 style="min-width: 100px;">
+                                <div class="user-name"><strong>@{{ message.username }}</strong></div>
+                                <div class="user-time" style="font-size: 12px; color: darkgrey">{{ message.time|date('d.m.Y H:i:s') }}</div>
+                            </div>
+                            <div class="user-message">{{ message.text }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="lead" style="font-size: 25px!important;">
+                    The chat is empty, fill it with your cringe messages
+                </p>
+            {% endif %}
+        </div>
+        <form method="post" class="card-footer w-100 d-flex align-items-center justify-content-between mb-0">
+            <input
+                    type="text"
+                    class="form-control"
+                    name="message"
+                    id="inputMessage"
+                    placeholder="Input your message"
+                    value=""
+                    {% if login is empty%}
+                        {{ "disabled" }}
+                    {% endif %}
+            >
+
+            <button
+                    class="send-message btn btn-primary ms-2"
+                    type="submit"
+                    {% if login is empty%}
+                        {{ "disabled" }}
+                    {% endif %}
+            >
+            Send
+            </button>
+        </form>
+    </div>
+</div>
