@@ -66,7 +66,7 @@ class Application
         }
         // костыль закончился
 
-        if ($uri['path'] === '/home') {
+        if ($uri['path'] === '/ModifyChat/home') {
             $homeController = $this->serviceLocator->get('homeController');
 
             // отправка сообщения
@@ -77,6 +77,12 @@ class Application
                     'time' => date("Y-m-d H:i:s")
                 ];
                 $homeController->create($message);
+
+                header('Location: ' . $_SERVER['REQUEST_URI']);
+
+                $userController = $this->serviceLocator->get('userController');
+                echo $homeController->show($userController->getLogo($_COOKIE['login']));
+                die();
 
                 // регистрация
             } elseif (isset($_POST['login']) and isset($_POST['password']) and isset($_POST['re-password'])) {
@@ -102,10 +108,9 @@ class Application
             }
 
             $userController = $this->serviceLocator->get('userController');
-
             echo $homeController->show($userController->getLogo($_COOKIE['login']));
 
-        } elseif ($uri['path'] === '/profile' and $_COOKIE['login']) {
+        } elseif ($uri['path'] === '/ModifyChat/profile' and $_COOKIE['login']) {
             $userController = $this->serviceLocator->get('userController');
 
             // тут должен быть контроллер с редактированием

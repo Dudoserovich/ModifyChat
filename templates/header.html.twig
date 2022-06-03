@@ -5,7 +5,7 @@
                 <h1 class="display-5">
                     Chat
                 </h1>
-                <img src="static/logo.png"
+                <img src="../static/logo.png"
                      alt="logoIcon"
                      style="height: calc(1.425rem + 2.8vw);
                      max-height: 60px;
@@ -15,10 +15,10 @@
             </a>
             <ul class="navbar-nav" style="flex-direction: row;">
                 <li class="nav-item">
-                    <a class="nav-link {% if currentLink == 'home'%}{{ "active" }}{% endif %}" aria-current="page" href="/home">Home</a>
+                    <a class="nav-link {% if currentLink == 'home'%}{{ "active" }}{% endif %}" aria-current="page" href="/ModifyChat/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if login is empty %}{{ "disabled" }}{% endif %} {% if currentLink == 'profile'%}{{ "active" }}{% endif %}" href="/profile">Profile</a>
+                    <a class="nav-link {% if login is empty %}{{ "disabled" }}{% endif %} {% if currentLink == 'profile'%}{{ "active" }}{% endif %}" href="/ModifyChat/profile">Profile</a>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,7 @@
                 </button>
             </div>
         {% else %}
-            <a href="/home?logout=1" type="submit" class="btn btn-danger">Log out</a>
+            <a href="/ModifyChat/home?logout=1" type="submit" class="btn btn-danger">Log out</a>
         {% endif %}
     </div>
 </nav>

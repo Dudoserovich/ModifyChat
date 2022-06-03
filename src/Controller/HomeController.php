@@ -34,6 +34,7 @@ class HomeController
             }
 
             return $messageView->render($logo);
+
         } else {
             $error = new ErrorView();
             echo $error->render("User not found", 500);
@@ -49,7 +50,10 @@ class HomeController
 
         if (!$result) {
             setcookie("typeNoty", "red");
-            setcookie("messageNoty", "Ошибка при отправке сообщения");
+            setcookie("messageNoty", "Error sending message");
+        } else {
+            setcookie("typeNoty", "green");
+            setcookie("messageNoty", "Message sent");
         }
 
         return $result;

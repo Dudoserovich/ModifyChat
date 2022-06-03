@@ -50,21 +50,21 @@ class UserController
 
                 if (!$newUser) {
                     setcookie("typeNoty", "warning");
-                    setcookie("messageNoty", "Пользователь не изменён. Возможно, пользователь с таким логином уже существует");
+                    setcookie("messageNoty", "The user has been changed. Perhaps a user with this login already exists");
                 } else {
                     setcookie('login', $newUser->getLogin(), array('httponly' => true));
                     setcookie('password', $newUser->getPassword(), array('httponly' => true));
 
-                    setcookie("typeNoty", "warning");
-                    setcookie("messageNoty", "Данные успешно изменены");
+                    setcookie("typeNoty", "green");
+                    setcookie("messageNoty", "Data changed successfully");
                 }
             } else {
                 setcookie("typeNoty", "warning");
-                setcookie("messageNoty", "Неверный старый пароль");
+                setcookie("messageNoty", "Wrong old password");
             }
         }
 
-        exit(header("Location: /profile"));
+        exit(header("Location: /ModifyChat/profile"));
     }
 
     public function logIn($user)
@@ -81,10 +81,10 @@ class UserController
                 setcookie('password', $userLogIn->getPassword(), array('httponly' => true));
             } else {
                 setcookie("typeNoty", "warning");
-                setcookie("messageNoty", "Неверный логин или пароль");
+                setcookie("messageNoty", "Wrong login or password");
             }
         }
-        header('Location: /home');
+        header('Location: ' . $_SERVER['REQUEST_URI']);
     }
 
     public function signUp($user)
@@ -109,7 +109,8 @@ class UserController
                     setcookie("messageNoty", "User with this login already exists");
                 }
             }
-            header('Location: /home');
+
+            header('Location: ' . $_SERVER['REQUEST_URI']);
         }
     }
 
@@ -127,6 +128,6 @@ class UserController
         setcookie('login', '', time() - 3600);
         setcookie('password', '', time() - 3600);
 
-        header('Location: /home');
+        header('Location: ' . parse_url($_SERVER['REQUEST_URI'])['path']);
     }
 }
